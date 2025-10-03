@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Happy Boyfriend's Day, Skandourti!</title>
+    <title>Happy Boyfriend's Day skandourti!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        /* New Font for Letter Header */
+        /* Fonts */
         @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap'); /* Used for header */
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
 
         body {
             background-color: #e0f7fa; /* Light Baby Blue */
@@ -35,8 +35,7 @@
             z-index: 10;
         }
 
-
-        /* Kiss Emojis Background (Kept Pink) */
+        /* Kiss Emojis Background */
         .kisses-container {
             position: absolute;
             top: 0;
@@ -52,7 +51,7 @@
             position: absolute;
             font-size: 30px;
             animation: fall linear infinite;
-            color: #ff69b4; 
+            color: #ff69b4; /* Kept Pink for contrast */
             text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); 
         }
 
@@ -61,7 +60,7 @@
             100% { transform: translateY(120vh) rotate(360deg); opacity: 0; }
         }
 
-        /* --- Envelope Styling (Changed to Blue Tones) --- */
+        /* --- Envelope Styling --- */
         .envelope-wrapper {
             position: relative;
             width: 90vw;
@@ -130,7 +129,7 @@
             transform: rotateX(180deg);
         }
 
-        /* Heart Emojis (Kept Pink for Contrast) */
+        /* Heart Emojis */
         .heart {
             position: absolute;
             background-color: #e91e63;
@@ -165,7 +164,7 @@
             100% { transform: translateY(-150px) rotate(-45deg); opacity: 0; }
         }
 
-        /* Letter Paper (Changed to Light Blue Paper) */
+        /* Letter Paper */
         .letter-paper {
             position: absolute;
             top: 0;
@@ -233,10 +232,6 @@
 
     <div class="bf-day-header">Happy Boyfriend's Day, Skandourti</div>
 
-    <audio id="mySong" preload="auto">
-      <source src="https://raw.githubusercontent.com/lemsiaicha948-cloud/Love-letter-for-skandourti/main/0201/Mitski%20-%20My%20Love%20Mine%20All%20Mine.mp3" type="audio/mpeg">
-    </audio>
-
     <div class="kisses-container"></div>
     
     <div class="envelope-wrapper" onclick="openEnvelope()">
@@ -263,7 +258,6 @@
             const envelope = document.querySelector('.envelope');
             const letterPaper = document.querySelector('.letter-paper');
             const hearts = document.querySelectorAll('.heart');
-            const mySong = document.getElementById('mySong');
             
             envelope.classList.add('open');
             setTimeout(() => {
@@ -272,13 +266,6 @@
                     heart.style.animationPlayState = 'running';
                     heart.style.opacity = '1';
                 });
-                
-                // Play from the start
-                mySong.load();
-                mySong.oncanplaythrough = function() {
-                    mySong.play();
-                };
-                
             }, 500);
         }
 
