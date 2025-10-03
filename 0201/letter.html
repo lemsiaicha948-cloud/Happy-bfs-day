@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Happy Boyfriend's Day, Skandourti!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* New Font for Letter Header */
+        @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap'); /* Used for header */
+
+        body {
+            background-color: #e0f7fa; /* Light Baby Blue */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Amatic SC', cursive;
+            color: #01579b; /* Dark Blue Text */
+            text-align: center;
+            position: relative;
+        }
+
+        /* --- Boyfriend's Day Header --- */
+        .bf-day-header {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Dancing Script', cursive; /* Kailey-style font */
+            font-size: clamp(2em, 5vw, 3.5em);
+            color: #00bcd4; /* Brighter Blue */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+
+
+        /* Kiss Emojis Background (Kept Pink) */
+        .kisses-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .kiss {
+            position: absolute;
+            font-size: 30px;
+            animation: fall linear infinite;
+            color: #ff69b4; 
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); 
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 0.8; }
+            100% { transform: translateY(120vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* --- Envelope Styling (Changed to Blue Tones) --- */
+        .envelope-wrapper {
+            position: relative;
+            width: 90vw;
+            max-width: 500px;
+            height: 60vw;
+            max-height: 350px;
+            filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.3));
+            cursor: pointer;
+            transform: scale(0.85);
+            transition: transform 0.5s ease;
+            z-index: 1;
+        }
+
+        .envelope-wrapper:hover {
+            transform: scale(1);
+        }
+
+        .envelope {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #81d4fa; /* Medium Baby Blue */
+            border-radius: 15px;
+            transition: transform 1s ease-in-out;
+        }
+
+        .envelope.open {
+            transform: translateY(-80px);
+        }
+
+        /* Bottom flap */
+        .envelope:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 50% solid transparent;
+            border-right: 50% solid transparent;
+            border-top: calc(100% / 3 * 2) solid #4fc3f7; /* Darker Blue Flap */
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            z-index: 2;
+        }
+
+        /* Top Flap */
+        .envelope:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 50% solid transparent;
+            border-right: 50% solid transparent;
+            border-bottom: calc(100% / 3) solid #29b6f6; /* Bright Blue Flap */
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            transform-origin: top;
+            transition: transform 0.5s ease-in-out;
+            z-index: 4;
+        }
+
+        .envelope.open:after {
+            transform: rotateX(180deg);
+        }
+
+        /* Heart Emojis (Kept Pink for Contrast) */
+        .heart {
+            position: absolute;
+            background-color: #e91e63;
+            width: 20px;
+            height: 20px;
+            transform: rotate(-45deg);
+            z-index: 3;
+            animation: floatUp 4s ease-in-out infinite;
+            opacity: 0;
+        }
+        .heart:before, .heart:after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #e91e63;
+            border-radius: 50%;
+        }
+        .heart:before { top: -10px; left: 0; }
+        .heart:after { left: 10px; top: 0; }
+        .heart-1 { top: 15%; left: 15%; animation-delay: 0s; }
+        .heart-2 { top: 20%; right: 20%; animation-delay: 0.5s; }
+        .heart-3 { bottom: 20%; left: 30%; animation-delay: 1s; }
+        .heart-4 { bottom: 15%; right: 15%; animation-delay: 1.5s; }
+        .heart-5 { top: 35%; left: 50%; animation-delay: 2s; }
+        .heart-6 { bottom: 25%; left: 70%; animation-delay: 2.5s;}
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(-45deg); opacity: 0; }
+            20% { opacity: 1; }
+            80% { opacity: 1; }
+            100% { transform: translateY(-150px) rotate(-45deg); opacity: 0; }
+        }
+
+        /* Letter Paper (Changed to Light Blue Paper) */
+        .letter-paper {
+            position: absolute;
+            top: 0;
+            left: 5%;
+            width: 90%;
+            height: 90%;
+            background-color: #e0f7fa; /* Light Blue Paper */
+            border-radius: 5px;
+            padding: 10px;
+            box-sizing: border-box;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+            transform: translateY(180px) scale(0.9);
+            opacity: 0;
+            transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+            font-family: 'Amatic SC', cursive;
+            line-height: 1.3;
+            color: #01579b; /* Dark Blue Text */
+            text-align: center;
+        }
+
+        .letter-paper.show {
+            transform: translateY(-80px) scale(1.1);
+            opacity: 1;
+            z-index: 5;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .letter-text-content {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 5px;
+            box-sizing: border-box;
+            text-align: left;
+            font-size: clamp(1.2em, 2.8vw, 2em);
+        }
+
+        .letter-text-content h2 {
+            font-size: clamp(1.5em, 3.5vw, 2.5em);
+            text-align: center;
+            margin: 5px 0 10px 0;
+            padding: 0;
+            line-height: 1.2;
+            color: #00bcd4; /* Header Text Color */
+        }
+
+        .letter-text-content p {
+            margin-bottom: 5px;
+            text-align: left;
+            padding: 0;
+        }
+        
+        .letter-text-content .signature {
+            font-style: italic;
+            margin-top: 15px;
+            text-align: right;
+            font-size: clamp(1em, 2.5vw, 1.8em);
+            line-height: 1.2;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bf-day-header">Happy Boyfriend's Day, Skandourti</div>
+
+    <audio id="mySong" preload="auto">
+      <source src="https://raw.githubusercontent.com/lemsiaicha948-cloud/Love-letter-for-skandourti/main/0201/Mitski%20-%20My%20Love%20Mine%20All%20Mine.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="kisses-container"></div>
+    
+    <div class="envelope-wrapper" onclick="openEnvelope()">
+        <div class="heart heart-1"></div>
+        <div class="heart heart-2"></div>
+        <div class="heart heart-3"></div>
+        <div class="heart heart-4"></div>
+        <div class="heart heart-5"></div>
+        <div class="heart heart-6"></div>
+        <div class="envelope"></div>
+        <div class="letter-paper">
+            <div class="letter-text-content">
+                <h2>Skandourti, Mine All Mine!</h2>
+                <p>
+                    Baed ma amlna 9 chhor ma badhna kolhom barcha hob w saat ark🙃w barcha dates ma badhna w barcha hajet okhraa mezyenaa samahni katousi ken amtlk hajet tghachek saat w tkhalik thes li enty mandkch importance andi wala ay haja ama mch shih wlh saghrountek dima thebek bli ysir w tkhaf alik w andha ken enty fi hyethaa w thebek barchaa w impossible tebed alik beli ysiir habit nkolek li ena nhebek barcha w raw bli ysir beli bch ntarkou omri ma nfed menek ya rouhi w omri ma nbed alik behy aych rouhi mtnsechh hatta kif ntghachech wlhy mbaed nbred (shih mch fisa)ama nbred yani narja kima kontt madech mtghacha lberah amlna 9 chhor w ahna mtarkin nchallah lakba l barcha ochhra w a3wem okhrin ma badhna w ahna nhebou badhnaa w dima ma badhna hatta nouslou ll but mtena ya rouhi bisouuus nhebek barcha w raby ykhalik leya ya ahsen rajel arftou f hyety nhebek barcha skandourti happy bf’s day to best bf in the world bisouuusss ya ahla haja fi hyetyy🥰❤️
+                </p>
+                <div class="signature">Chachatek</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openEnvelope() {
+            const envelope = document.querySelector('.envelope');
+            const letterPaper = document.querySelector('.letter-paper');
+            const hearts = document.querySelectorAll('.heart');
+            const mySong = document.getElementById('mySong');
+            
+            envelope.classList.add('open');
+            setTimeout(() => {
+                letterPaper.classList.add('show');
+                hearts.forEach(heart => {
+                    heart.style.animationPlayState = 'running';
+                    heart.style.opacity = '1';
+                });
+                
+                // Play from the start
+                mySong.load();
+                mySong.oncanplaythrough = function() {
+                    mySong.play();
+                };
+                
+            }, 500);
+        }
+
+        const kissesContainer = document.querySelector('.kisses-container');
+        const numKisses = 30;
+        const emojis = ['😘', '💋', '❤️', '💖'];
+
+        for (let i = 0; i < numKisses; i++) {
+            const kiss = document.createElement('span');
+            kiss.classList.add('kiss');
+            kiss.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            kiss.style.left = `${Math.random() * 100}vw`;
+            kiss.style.animationDuration = `${Math.random() * 5 + 7}s`;
+            kiss.style.animationDelay = `${Math.random() * 8}s`;
+            kissesContainer.appendChild(kiss);
+        }
+    </script>
+
+</body>
+</html>
